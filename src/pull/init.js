@@ -96,8 +96,13 @@ async function contentHandler () {
 
     logger.info(`Handling ${JAVID}'s torrent, hash ${hash}`)
 
-    if (size > 10) {
+    if (size > 15) {
       skipItem(`[${JAVID}] File oversized, skipped`)
+      continue
+    }
+    
+    if (size < 3) {
+      skipItem(`[${JAVID}] File compressed, skipped`)
       continue
     }
 
